@@ -30,7 +30,7 @@ SECRET_KEY = '+5w!^*5l4%i!i_nmaxz5$va4n0_#$87butn5^bbfhzry%s!op-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1','foodline-demo.herokuapp.com']
 
 
 # Application definition
