@@ -123,7 +123,7 @@ def addOrderitem(request):
             )
 
             dish.counterInStock -= item.qty
-            dish.save
+            dish.save()
     
     serializer = OrderSerializer(order , many=False)
     return  Response(serializer.data)
