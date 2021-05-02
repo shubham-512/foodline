@@ -39,7 +39,12 @@ def getRoutes(request):
         '/api/dish/<id>',
         'api/users/profile/',
         'api/users/login',
+        'api/users/registeruser/',
         'api/add/order/',
+        'api/orders/',
+        'api/myorders/',
+        'api/order/<str:pk>/',
+        'api/order/<str:pk>/pay/',
     ]
     return Response(routes)
 
