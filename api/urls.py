@@ -6,6 +6,7 @@ urlpatterns = [
     path('api/menu/', views.getMenu, name="menu"),
     path('api/users/profile/', views.getUserProfile, name="user-profile"),
     path('api/dish/<str:id>/', views.getDish, name="dish"),
+    path('api/dish/category/<str:category>/', views.getDishCategory, name="dish-category"),
     path('api/users/login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/users/registeruser/', views.registerUser, name="register-user"),
     path('api/users/', views.getUsers, name="user-profile"),

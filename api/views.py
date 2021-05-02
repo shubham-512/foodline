@@ -91,6 +91,12 @@ def getDish(request, id):
     serializer = MenuSerializer(dish , many=False)
     return  Response(serializer.data)
 
+@api_view(['GET'])
+def getDishCategory(request, category):
+    dish = Menu.objects.filter(category = category)
+    serializer = MenuSerializer(dish , many=True)
+    return  Response(serializer.data)
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def addOrderitem(request):
