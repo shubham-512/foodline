@@ -72,6 +72,28 @@ def getUserProfile(request):
     serializer = UserSerializer(user , many=False)
     return  Response(serializer.data)
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateUserProfile(request):
+    user = request.user
+    serializer = UserSerializerWithToken(user, many=False)
+
+    data = request.data
+    if 'name' in data:
+        user.first_name = data['name']
+   
+    if 'email' in data:
+        user.username = data['email']
+        user.email = data['email']
+
+    if 'password' in data:
+        if data['password'] != '':
+            user.password = make_password(data['password'])
+
+    user.save()
+
+    return Response(serializer.data)
+
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def getUsers(request):
@@ -124,8 +146,7 @@ def addOrderitem(request):
                 order=order,
                 name=dish.dish_name,
                 qty=i['qty'],
-                price=i['price'],
-                image=dish.image.url,
+                price=i['price']
             )
 
             dish.counterInStock -= item.qty
